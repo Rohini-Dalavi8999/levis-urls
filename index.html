@@ -1,0 +1,50 @@
+<div ng-app="MyApp" ng-controller="MyController">
+   <div style="margin:10px;">
+    
+     
+     
+     
+     <center><h3>Select a brand:</h3></center>
+        
+   
+  
+    <span ng-repeat="l in levis">
+      <label for="Levis">Levis</label><input type="radio" ng-model="$parent.selectedObj" ng-value="l">
+    </span>
+     <span ng-repeat="d in dockers">
+       &nbsp; &nbsp;
+          <label for="Dockers">Dockers</label> <input type="radio" ng-model="$parent.selectedObj" ng-value="d"> 
+      
+    </span>
+    <br><br>
+     <input type="text" class="form-control" ng-model="main.searchInput" placeholder="Enter Text">
+     <center>
+     <table class="table table-bordered table-hover table-responsive" id="m">
+ 
+    <tbody>
+      <tr>
+        <td>
+    <a href="{{selectedObj.otherValue1}}{{main.searchInput}}">{{selectedObj.otherValue1}}{{main.searchInput}}</a>
+    </td>
+      </tr>
+    </tbody><br>
+    <tbody>
+      <tr>
+        <td>
+   <a href="{{selectedObj.otherValue2}}{{main.searchInput}}">{{selectedObj.otherValue2}}{{main.searchInput}}</a>
+           </td>
+      </tr>
+    </tbody>
+       <tbody>
+      <tr>
+        <td>
+   <a href="{{selectedObj.otherValue2}}{{main.searchInput}}">{{selectedObj.otherValue3}}{{main.searchInput}}</a>
+           </td>
+      </tr>
+    </tbody>
+ 
+     </table>
+       <center>
+</div>
+        
+  </div>
