@@ -1,119 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
-    <style>
-    body {
-  background-color: lightblue;
-  text-align: center;
-}
-h3{
-  font-weight:bold;
-}
-a{
-  color:black;
-  
-  
-}
-table{
-  width:50%;
-  height:50%;
-  text-align:left;
-   border-collapse: collapse;
-}
-table:hover{
- background-color:lightgray;
-}
-td:hover{
-  background-color:lightblue;
-            
+<html ng-app="RegionApp">
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet"/>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            body{
+                background-color: lightblue;
+            }
+            img{
+                border-radius: 50px;
+            }
+            th{
+                background-color: dodgerblue;
+                color: white;
+                text-align: center;
+            }
+            table:hover{
+                background-color: lightgrey;
+                cursor: hand;
             }
             tr{
                 text-align: center;
-              display: inline; 
             }
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-</style>
-</head>
-<body>
-    <div ng-app="MyApp" ng-controller="MyController">
-        <div style="margin:10px;">
-         
-          
-          
-          
-          <center><h3>Select a brand:</h3></center>
-             
-        
-       
-         <span ng-repeat="l in levis">
-           <label for="Levis">Levis</label><input type="radio" ng-model="$parent.selectedObj" ng-value="l">
-         </span>
-          <span ng-repeat="d in dockers">
-            &nbsp; &nbsp;
-               <label for="Dockers">Dockers</label> <input type="radio" ng-model="$parent.selectedObj" ng-value="d"> 
-           
-         </span>
-         <br><br>
-          <input type="text" class="form-control" ng-model="main.searchInput" placeholder="Enter Text">
-          <center>
-          <table class="table table-bordered table-hover table-responsive" id="m">
-      
-         <tbody>
-           <tr>
-             <td>
-         <a href="{{selectedObj.otherValue1}}{{main.searchInput}}">{{selectedObj.otherValue1}}{{main.searchInput}}</a>
-         </td>
-           </tr>
-         </tbody><br>
-         <tbody>
-           <tr>
-             <td>
-        <a href="{{selectedObj.otherValue2}}{{main.searchInput}}">{{selectedObj.otherValue2}}{{main.searchInput}}</a>
-                </td>
-           </tr>
-         </tbody>
-            <tbody>
-           <tr>
-             <td>
-        <a href="{{selectedObj.otherValue2}}{{main.searchInput}}">{{selectedObj.otherValue3}}{{main.searchInput}}</a>
-                </td>
-           </tr>
-         </tbody>
-      
-          </table>
-            <center>
-     </div>
-             
-       </div>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script>
-var m = angular.module("MyApp", []);
-m.controller("MyController", ["$scope", function($scope) {
-  $scope.selectedObj = {};
- 
-  
-  $scope.levis = [{
-    otherValue1: 'https://prodlsa-origin.levi-site.com/US/en_US/',
-    otherValue2:'https://prodlsa-origin.levi-site.com/CA/en_CA/',
-    otherValue3:'https://prodlsa-origin.levi-site.com/GB/en_GB/'
-  }];
-  $scope.dockers = [{
-    otherValue1: 'https://prodlsa-origin.dockers-site.com/US/en_US/',
-    otherValue2:'https://prodlsa-origin.dockers-site.com/CA/en_CA/',
-    otherValue3:'https://prodlsa-origin.dockers-site.com/GB/en_GB/'
-  }];
-}]);
-
-</script>
-</body>
+            tr:nth-child(odd)
+            {
+                background-color: white;
+            }
+            tr:nth-child(even)
+            {
+                background-color: lightskyblue;
+            }
+        </style>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script>
+            var app = angular.module("RegionApp", []);
+            app.controller("regionController", function($scope){
+                $scope.fetchNorth = function(){
+                    $scope.cities = [{name:'Delhi', photo: 'images/delhi.jpg', info: 'It is the capital city of India that contains many attractive sites like Red Fort, Qutub Minar, Jantar Mantar etc.'},
+                    {name: 'Chandigarh', photo:'images/chandigarh.jpg', info: 'Chandigarh is a union territory situated at the border of Punjab and Haryana'},
+                    {name: 'Kashmir', photo: 'images/kashmir.jpg', info: 'Kashmir is also known as the heaven on earth. The most attractive tourist place of all'},
+                    {name: 'Gurgaon', photo: 'images/gurgaon.jpg', info: 'It is located in the Delhi NCR region and is one of the IT hubs in India.'}];
+                }
+                $scope.fetchSouth = function(){
+                    $scope.cities = [{name:'Chennai', photo: 'images/chennai.jpg', info: 'It is a beautiful city located in the state of Tamil Nadu. It has a variety of people and cuisines.'},
+                    {name: 'Bangalore', photo:'images/bangalore.jpg', info: 'Bangalore is the biggest IT hub of India. It also contains many tourist attractions.'},
+                    {name: 'Ooty', photo: 'images/ooty.jpg', info: 'Ooty is a famous hill station in the southern part of India.'},
+                    {name: 'Hyderabad', photo: 'images/hyderabad.jpg', info: 'Hyderabad is famous for its biryani and charminar.'}];
+                }
+                $scope.fetchEast = function(){
+                    $scope.cities = [{name:'Dispur', photo: 'images/dispur.jpg', info: 'Dispur is the capital city of Assam and is famous for its Tea Plantations.'},
+                    {name: 'Meghalaya', photo:'images/meghalaya.jpg', info: 'It has the highest rainfall percentage in India.'},
+                    {name: 'Gangtok', photo: 'images/gangtok.jpg', info: 'Gangtok is a place is East India which is famous for its buddhist culture.'}];
+                }
+                $scope.fetchWest = function(){
+                    $scope.cities = [{name:'Ahmedabad', photo: 'images/ahmedabad.jpg', info: 'The city of Businessman. The city in which Daya Behen was born.'},
+                    {name: 'Jaipur', photo:'images/jaipur.jpg', info: 'Jaipur is also known as Pink City, situated in the state of Rajasthan, it is one of the most heritage cities in India.'},
+                    {name: 'Jaisalmer', photo: 'images/jaisalmer.jpg', info: 'Jaisalmer is also located in the state of Rajasthan and is famous for its Sand Dunes.'},
+                    {name: 'Surat', photo: 'images/surat.jpg', info: 'Surat is in the state of Gujarat and is one of the fastest developing cities in the whole Asian continent.'}];
+                }
+            });
+        </script>
+    </head>
+    <body ng-controller="regionController">
+        <div class="container" style="margin-top: 20px">
+            <div class="row well"><center><h2>Select a region:</h2>
+                <input type="radio" ng-model="region" ng-click="fetchNorth()" value="north" id="north"><label for="north">North India</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" ng-model="region" value="south" ng-click="fetchSouth()" id="south"><label for="south">South India</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" ng-model="region" value="east" ng-click="fetchEast()" id="east"><label for="east">East India</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" ng-model="region" value="west" ng-click="fetchWest()" id="west"><label for="west">West India</label>
+                </center>
+            </div>
+            <div class="row well" ng-switch="region">
+                <div ng-switch-when="north">
+                    <table class="table table-bordered table-hover table-responsive table-condensed">
+                        <tr><th>City Name</th><th>City Info</th><th>Photo</th></tr>
+                        <tbody>
+                        <tr ng-repeat="city in cities"><td>{{city.name}}</td><td>{{city.info}}</td><td><img src={{city.photo}} height="100" width="100"></td></tr>
+                            </tbody>
+                    </table>
+                </div>
+                <div ng-switch-when="south">
+                    <table class="table table-bordered table-hover table-responsive table-condensed">
+                        <tr><th>City Name</th><th>City Info</th><th>Photo</th></tr>
+                        <tbody>
+                        <tr ng-repeat="city in cities"><td>{{city.name}}</td><td>{{city.info}}</td><td><img src={{city.photo}} height="100" width="100"></td></tr>
+                            </tbody>
+                    </table>
+                </div>
+                <div ng-switch-when="east">
+                    <table class="table table-bordered table-hover table-responsive table-condensed">
+                        <tr><th>City Name</th><th>City Info</th><th>Photo</th></tr>
+                        <tbody>
+                        <tr ng-repeat="city in cities"><td>{{city.name}}</td><td>{{city.info}}</td><td><img src={{city.photo}} height="100" width="100"></td></tr>
+                            </tbody>
+                    </table>
+                </div>
+                <div ng-switch-when="west">
+                    <table class="table table-bordered table-hover table-responsive table-condensed">
+                        <tr><th>City Name</th><th>City Info</th><th>Photo</th></tr>
+                        <tbody>
+                        <tr ng-repeat="city in cities"><td>{{city.name}}</td><td>{{city.info}}</td><td><img src={{city.photo}} height="100" width="100"></td></tr>
+                            </tbody>
+                    </table>
+                </div>
+                <div ng-switch-default>
+                    <center><h2>No Region Selected</h2></center>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
